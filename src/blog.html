@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Niyonkuru Thierry's Tech & Engineering Blog">
+    <title>Blog | Niyonkuru Thierry</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Optional: Add Google Fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Extra styles specific to Blog Page */
+        .blog-header {
+            padding-top: 120px;
+            padding-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .blog-content {
+            padding: var(--spacing-md);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-mono);
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .blog-title a {
+            color: var(--text-primary);
+        }
+
+        .blog-title a:hover {
+            color: var(--accent-blue);
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Single Post Layout Template */
+        .single-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 120px;
+            padding-bottom: var(--spacing-xl);
+            display: none; /* Hidden by default, unhide to see template */
+        }
+
+        .post-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .post-hero-img {
+            width: 100%;
+            height: 400px;
+            background-color: var(--border-color);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .post-body p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .post-body h2 {
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .code-snippet {
+            background-color: #1e1e1e; /* Dark theme for code */
+            color: #d4d4d4;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-mono);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-md);
+            border: 1px solid #333;
+        }
+
+        /* Back button */
+        .back-link {
+            display: inline-block;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation (Reused from index.html) -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">NT.</a>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                    <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="blog-listing">
+        <!-- Blog Header -->
+        <section class="blog-header">
+            <div class="container">
+                <h1 class="hero-title">Engineering & Code</h1>
+                <p class="section-subtitle">Thoughts, tutorials, and learnings from my journey in tech.</p>
+            </div>
+        </section>
+
+        <!-- Blog Filters & Grid -->
+        <section class="blog-posts-section">
+            <div class="container">
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-filter="all">All Posts</button>
+                    <button class="filter-btn" data-filter="engineering">Engineering</button>
+                    <button class="filter-btn" data-filter="cyber">Cybersecurity</button>
+                    <button class="filter-btn" data-filter="finance">Trading & Finance</button>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Post 1 -->
+                    <article class="blog-card" data-category="engineering">
+                        <div class="blog-img">Featured Image Placeholder</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>Nov 10, 2024</span>
+                                <span class="tag">Engineering</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#" onclick="showPostTemplate(event)">Designing a Pedal-Powered Water Pump</a></h3>
+                            <p class="blog-excerpt">A deep dive into the thermodynamics, mechanics, and CAD design process behind my final year project.</p>
+                            <a href="#" class="read-more" onclick="showPostTemplate(event)">Read Article &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="blog-card" id="cyber-iot" data-category="cyber">
+                        <div class="blog-img">Featured Image Placeholder</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>Oct 22, 2024</span>
+                                <span class="tag">Cybersecurity</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#" onclick="showPostTemplate(event)">Securing IoT Devices in Mechanical Systems</a></h3>
+                            <p class="blog-excerpt">As physical machines connect to the internet, understanding basic ethical hacking principles becomes vital for mechanical engineers.</p>
+                            <a href="#" class="read-more" onclick="showPostTemplate(event)">Read Article &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="blog-card" data-category="finance">
+                        <div class="blog-img">Featured Image Placeholder</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>Sept 05, 2024</span>
+                                <span class="tag">Trading</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#" onclick="showPostTemplate(event)">Building a Crypto Dashboard with JS</a></h3>
+                            <p class="blog-excerpt">A tutorial on fetching live market data from REST APIs and displaying it using Vanilla JavaScript.</p>
+                            <a href="#" class="read-more" onclick="showPostTemplate(event)">Read Article &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SINGLE POST TEMPLATE (Hidden by default, simulated routing for demo purposes) -->
+    <main id="single-post" class="single-post-container">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showBlogListing(event)">&larr; Back to all posts</a>
+
+            <article>
+                <header class="post-header">
+                    <div class="blog-meta mb-2">
+                        <span>Nov 10, 2024</span>
+                        <span class="tag">Engineering</span>
+                    </div>
+                    <h1 class="hero-title">Designing a Pedal-Powered Water Pump</h1>
+                    <p class="section-subtitle">Bridging thermodynamics and practical mechanical design for sustainable rural solutions.</p>
+                </header>
+
+                <div class="post-hero-img">High-Res Image Placeholder</div>
+
+                <div class="post-body">
+                    <h2>The Problem Statement</h2>
+                    <p>Access to clean water in remote areas often relies on manual hand pumps or expensive motorized solutions. As part of my final year project at the University of Rwanda, I wanted to explore a middle ground: a pedal-powered mechanism that leverages the ergonomic efficiency of human leg muscles.</p>
+
+                    <h2>System Architecture</h2>
+                    <p>The core concept involves converting rotational kinetic energy from a standard bicycle frame into reciprocating motion required by a piston pump.</p>
+
+                    <!-- Example Code Snippet for Tech Posts -->
+                    <h2>Calculating Flow Rate</h2>
+                    <p>To calculate the theoretical flow rate, we use a simple Python script mapping RPM to volumetric displacement:</p>
+
+                    <div class="code-snippet">
+<pre><code>def calculate_flow_rate(rpm, bore, stroke):
+    # bore and stroke in meters
+    import math
+    area = math.pi * (bore / 2)**2
+    # Flow rate in cubic meters per minute
+    flow_rate = area * stroke * rpm
+    # Convert to liters per minute
+    return flow_rate * 1000
+
+# Example usage
+lpm = calculate_flow_rate(60, 0.05, 0.1)
+print(f"Flow rate: {lpm:.2f} L/min")</code></pre>
+                    </div>
+
+                    <h2>Conclusion</h2>
+                    <p>By blending traditional mechanical principles with modern CAD software, we were able to iterate designs quickly before entering the fabrication phase. The next step is integrating basic IoT sensors to measure actual flow rate against theoretical calculations!</p>
+                </div>
+            </article>
+
+            <!-- Comments Section Placeholder -->
+            <div style="margin-top: var(--spacing-xl); padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
+                <h3>Comments (0)</h3>
+                <p style="color: var(--text-secondary);">Comments are powered by a mock backend.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Niyonkuru Thierry. Built from scratch with HTML, CSS, and JS.</p>
+        </div>
+    </footer>
+
+    <!-- Basic Script for Blog Demo Functionality -->
+    <script>
+        // Theme Toggle (Simplified version for blog page standalone)
+        const themeBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const iconSun = document.querySelector('.icon-sun');
+        const iconMoon = document.querySelector('.icon-moon');
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'light') {
+            iconSun.style.display = 'none';
+            iconMoon.style.display = 'block';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            if (newTheme === 'dark') {
+                iconSun.style.display = 'block';
+                iconMoon.style.display = 'none';
+            } else {
+                iconSun.style.display = 'none';
+                iconMoon.style.display = 'block';
+            }
+        });
+
+        // Blog Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const filterValue = e.target.getAttribute('data-filter');
+
+                blogCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Simulated SPA Routing for Demo purposes (Switching between list and single post)
+        function showPostTemplate(e) {
+            e.preventDefault();
+            document.getElementById('blog-listing').style.display = 'none';
+            document.getElementById('single-post').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showBlogListing(e) {
+            e.preventDefault();
+            document.getElementById('single-post').style.display = 'none';
+            document.getElementById('blog-listing').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

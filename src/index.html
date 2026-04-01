@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Niyonkuru Thierry - Mechanical Engineer, Cybersecurity Enthusiast, and Tech Developer.">
+    <title>Niyonkuru Thierry | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Optional: Add Google Fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <!-- Figma: Header Container -> Flex Row (Logo, Nav Links, Theme Toggle) -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="#home" class="logo">NT.</a>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Home / Hero Section -->
+        <!-- Figma: Section -> Container -> Flex Row (Text Block, Image/Graphic Block) -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="greeting">Hi, my name is</p>
+                    <h1 class="hero-title">Niyonkuru Thierry.</h1>
+                    <h2 class="hero-subtitle">Mechanical Engineer & Tech Enthusiast.</h2>
+                    <p class="hero-description">
+                        I build solutions that bridge the physical and digital worlds.
+                        Currently an engineering student exploring cybersecurity, web development, and financial markets.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="hero-graphic">
+                    <!-- A simple CSS shape or placeholder for an image/3D element -->
+                    <div class="tech-shape"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <!-- Figma: Section -> Container -> Grid (Text Block, Image/Card) -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Hello! I'm a final-year BSc Mechanical Engineering student at the University of Rwanda, College of Science and Technology, based in Kigali.</p>
+                        <p>My passion lies at the intersection of traditional engineering and modern technology. While my academic background gives me a strong foundation in mechanical systems and maintenance, my innate curiosity has driven me to dive deep into ethical hacking, web development, and financial markets (Forex/Crypto).</p>
+                        <p>I am also the proud Founder of the <strong>East Africa Youth Hope Project</strong>, where I apply leadership and organizational skills to make a positive impact.</p>
+                        <a href="#" class="btn btn-primary mt-4">Download CV</a>
+                    </div>
+                    <div class="about-image-wrapper">
+                        <div class="image-placeholder">
+                            <span>Profile Image Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Projects Showcase -->
+        <!-- Figma: Section -> Container -> Flex Column (Filters, Grid (Project Cards)) -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="engineering">Engineering</button>
+                    <button class="filter-btn" data-filter="tech">Tech/Web</button>
+                    <button class="filter-btn" data-filter="leadership">Leadership</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <!-- Figma: Card -> Flex Column (Image, Content (Title, Desc, Tags, Links)) -->
+                    <div class="project-card" data-category="engineering">
+                        <div class="project-img-placeholder">Image</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Pedal Powered Water Pump</h3>
+                            <p class="project-desc">Design and construction of a sustainable, pedal-powered water pump for my mechanical engineering final year project.</p>
+                            <div class="project-tags">
+                                <span class="tag">Mechanical Design</span>
+                                <span class="tag">AutoCAD/SolidWorks</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="leadership">
+                        <div class="project-img-placeholder">Image</div>
+                        <div class="project-content">
+                            <h3 class="project-title">East Africa Youth Hope Project</h3>
+                            <p class="project-desc">Founder of a charity/leadership organization focused on empowering youth across the region.</p>
+                            <div class="project-tags">
+                                <span class="tag">Leadership</span>
+                                <span class="tag">Management</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">Visit Site</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 (Mock Tech Project) -->
+                    <div class="project-card" data-category="tech">
+                        <div class="project-img-placeholder">Image</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Crypto/Forex Dashboard</h3>
+                            <p class="project-desc">A web dashboard aggregating financial market data utilizing public APIs.</p>
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">REST APIs</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">GitHub</a>
+                                <a href="#" class="link-btn">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Skills / Expertise -->
+        <!-- Figma: Section -> Container -> Grid (Categories -> Flex Row (Skill Pills)) -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Click on a skill to see AI-powered recommendations!</p>
+
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Mechanical Engineering & Maintenance</h3>
+                        <div class="skill-pills">
+                            <button class="skill-pill" data-skill="maintenance">Equipment Maintenance</button>
+                            <button class="skill-pill" data-skill="cad">CAD / SolidWorks</button>
+                            <button class="skill-pill" data-skill="thermodynamics">Thermodynamics</button>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Tech Interests</h3>
+                        <div class="skill-pills">
+                            <button class="skill-pill" data-skill="cybersecurity">Ethical Hacking / Cybersecurity</button>
+                            <button class="skill-pill" data-skill="webdev">Web Development (HTML/CSS/JS)</button>
+                            <button class="skill-pill" data-skill="python">Python</button>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="skill-pills">
+                            <button class="skill-pill" data-skill="english">English (Fluent)</button>
+                            <button class="skill-pill" data-skill="german">German (B1)</button>
+                            <button class="skill-pill" data-skill="kinyarwanda">Kinyarwanda (Native)</button>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Financial Markets</h3>
+                        <div class="skill-pills">
+                            <button class="skill-pill" data-skill="forex">Forex Trading</button>
+                            <button class="skill-pill" data-skill="crypto">Crypto Analysis</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Experience / Timeline -->
+        <!-- Figma: Section -> Container -> Flex Column (Timeline Container -> Flex Rows (Items)) -->
+        <section id="experience" class="experience-section">
+            <div class="container">
+                <h2 class="section-title">Experience & Education</h2>
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Sept 17, 2025 – Nov 21, 2025</span>
+                            <h3 class="timeline-title">Mechanical Maintenance Intern</h3>
+                            <h4 class="timeline-org">Ruliba Clays Ltd</h4>
+                            <p>Assisting in the mechanical maintenance department, ensuring operational efficiency and minimizing downtime of industrial clay processing equipment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Present</span>
+                            <h3 class="timeline-title">BSc Mechanical Engineering</h3>
+                            <h4 class="timeline-org">University of Rwanda, College of Science and Technology</h4>
+                            <p>Final-year student focusing on mechanical systems design, thermodynamics, and sustainable engineering solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Testimonials -->
+        <!-- Figma: Section -> Container -> Grid (Cards) -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">Recommendations</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Thierry's leadership in the East Africa Youth Hope Project is inspiring. He brings an engineer's problem-solving mindset to community issues."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div>
+                                <h4 class="author-name">Peer/Colleague</h4>
+                                <span class="author-title">Community Leader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"An incredibly dedicated student with a rare combination of mechanical aptitude and a deep understanding of modern technology and cybersecurity."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div>
+                                <h4 class="author-name">Professor Placeholder</h4>
+                                <span class="author-title">University of Rwanda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact Section -->
+        <!-- Figma: Section -> Container -> Flex Row (Contact Info, Form Container) -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Let's connect</h3>
+                        <p>Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!</p>
+                        <div class="contact-details">
+                            <p>📍 Kigali, Rwanda</p>
+                            <p>📧 <a href="mailto:contact@example.com">contact@example.com</a></p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-icon" aria-label="LinkedIn">IN</a>
+                            <a href="#" class="social-icon" aria-label="GitHub">GH</a>
+                            <a href="#" class="social-icon" aria-label="Twitter">TW</a>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        <p id="form-status" class="form-status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Niyonkuru Thierry. Built from scratch with HTML, CSS, and JS.</p>
+        </div>
+    </footer>
+
+    <!-- AI Toast Notification Container (Hidden by default) -->
+    <!-- Figma: Fixed Position Absolute Container -> Toast Card -->
+    <div id="ai-toast" class="toast-container hidden">
+        <div class="toast-content">
+            <div class="toast-header">
+                <span class="toast-icon">✨ AI Match</span>
+                <button class="toast-close" aria-label="Close notification">&times;</button>
+            </div>
+            <p id="toast-message" class="toast-message">Recommendation goes here.</p>
+            <a id="toast-link" href="#" class="toast-link">View Details</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
