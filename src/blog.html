@@ -320,6 +320,28 @@ print(f"Flow rate: {lpm:.2f} L/min")</code></pre>
 
     <!-- Basic Script for Blog Demo Functionality -->
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+
         // Theme Toggle (Simplified version for blog page standalone)
         const themeBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
