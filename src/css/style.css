@@ -399,18 +399,23 @@ section:nth-child(even) {
     position: relative;
 }
 
-.image-placeholder {
+.profile-img {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background-color: var(--border-color);
+    object-fit: cover;
     border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
     position: relative;
     z-index: 1;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morph 8s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Decorative border behind image */
@@ -474,6 +479,7 @@ section:nth-child(even) {
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -481,14 +487,11 @@ section:nth-child(even) {
     box-shadow: var(--card-shadow);
 }
 
-.project-img-placeholder {
+.project-img {
     height: 200px;
-    background-color: var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
+    width: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .project-content {
@@ -698,11 +701,12 @@ section:nth-child(even) {
     gap: var(--spacing-sm);
 }
 
-.author-avatar {
+.author-avatar-img {
     width: 50px;
     height: 50px;
-    background-color: var(--border-color);
+    object-fit: cover;
     border-radius: 50%;
+    background-color: var(--border-color);
 }
 
 .author-name {
@@ -973,5 +977,116 @@ input:focus, textarea:focus {
 
     .timeline-dot {
         left: 23px;
+    }
+}
+
+/* ==========================================================================
+   Project Modal
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    transition: opacity var(--transition-normal);
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(0);
+    transition: transform var(--transition-normal);
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: translateY(20px);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--accent-blue);
+}
+
+.modal-hero-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-body {
+    padding: var(--spacing-lg);
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.modal-tags {
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.modal-desc {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.modal-links {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+    .modal-hero-img {
+        height: 200px;
+    }
+    .modal-body {
+        padding: var(--spacing-md);
+    }
+    .modal-title {
+        font-size: 1.5rem;
     }
 }

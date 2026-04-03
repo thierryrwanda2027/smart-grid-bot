@@ -230,3 +230,81 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+/* ==========================================================================
+   7. Project Modal Logic
+   ========================================================================== */
+
+const projectData = {
+    project1: {
+        title: "Pedal Powered Water Pump",
+        img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&h=400&fit=crop",
+        tags: ['<span class="tag">Mechanical Design</span>', '<span class="tag">AutoCAD</span>'],
+        desc: "Design and construction of a sustainable, pedal-powered water pump for my mechanical engineering final year project. This project leverages human energy efficiently to pump water from lower elevations to agricultural fields in rural settings without access to electricity.",
+        liveLink: "#",
+        githubLink: "#"
+    },
+    project2: {
+        title: "East Africa Youth Hope Project",
+        img: "https://images.unsplash.com/photo-1593113565694-c6f8716c0296?w=800&h=400&fit=crop",
+        tags: ['<span class="tag">Leadership</span>', '<span class="tag">Community</span>'],
+        desc: "As the founder of this organization, I lead initiatives to provide resources, mentorship, and tech education to youth across the region. We focus on bridging the digital divide and inspiring the next generation of engineers and leaders.",
+        liveLink: "#",
+        githubLink: "#"
+    },
+    project3: {
+        title: "Crypto/Forex Dashboard",
+        img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
+        tags: ['<span class="tag">JavaScript</span>', '<span class="tag">REST APIs</span>'],
+        desc: "A custom web dashboard that aggregates financial market data utilizing public APIs. Built entirely with vanilla JavaScript, HTML, and CSS, it features real-time price updates, moving average calculations, and light/dark theme support.",
+        liveLink: "#",
+        githubLink: "#"
+    }
+};
+
+window.openModal = function(projectId) {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+
+    const data = projectData[projectId];
+    if (!data) return;
+
+    document.getElementById('modal-img').src = data.img;
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-tags').innerHTML = data.tags.join('');
+    document.getElementById('modal-desc').textContent = data.desc;
+    document.getElementById('modal-live-link').href = data.liveLink;
+    document.getElementById('modal-github-link').href = data.githubLink;
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.querySelector('.modal-close');
+
+    if (modal && closeBtn) {
+        // Close modal via button
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore background scrolling
+        });
+
+        // Close modal by clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});

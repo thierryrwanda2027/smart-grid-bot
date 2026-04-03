@@ -62,8 +62,7 @@
                     </div>
                 </div>
                 <div class="hero-graphic">
-                    <!-- A simple CSS shape or placeholder for an image/3D element -->
-                    <div class="tech-shape"></div>
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=600&fit=crop" alt="Hero Graphic" class="hero-img">
                 </div>
             </div>
         </section>
@@ -81,9 +80,7 @@
                         <a href="#" class="btn btn-primary mt-4">Download CV</a>
                     </div>
                     <div class="about-image-wrapper">
-                        <div class="image-placeholder">
-                            <span>Profile Image Placeholder</span>
-                        </div>
+                        <img src="assets/images/profile.png" alt="Niyonkuru Thierry" class="profile-img">
                     </div>
                 </div>
             </div>
@@ -105,8 +102,8 @@
                 <div class="projects-grid">
                     <!-- Project 1 -->
                     <!-- Figma: Card -> Flex Column (Image, Content (Title, Desc, Tags, Links)) -->
-                    <div class="project-card" data-category="engineering">
-                        <div class="project-img-placeholder">Image</div>
+                    <div class="project-card" data-category="engineering" onclick="openModal('project1')">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=600&h=400&fit=crop" alt="Mechanical Water Pump" class="project-img">
                         <div class="project-content">
                             <h3 class="project-title">Pedal Powered Water Pump</h3>
                             <p class="project-desc">Design and construction of a sustainable, pedal-powered water pump for my mechanical engineering final year project.</p>
@@ -121,8 +118,8 @@
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="project-card" data-category="leadership">
-                        <div class="project-img-placeholder">Image</div>
+                    <div class="project-card" data-category="leadership" onclick="openModal('project2')">
+                        <img src="https://images.unsplash.com/photo-1593113565694-c6f8716c0296?w=600&h=400&fit=crop" alt="East Africa Youth Hope Project" class="project-img">
                         <div class="project-content">
                             <h3 class="project-title">East Africa Youth Hope Project</h3>
                             <p class="project-desc">Founder of a charity/leadership organization focused on empowering youth across the region.</p>
@@ -137,8 +134,8 @@
                     </div>
 
                     <!-- Project 3 (Mock Tech Project) -->
-                    <div class="project-card" data-category="tech">
-                        <div class="project-img-placeholder">Image</div>
+                    <div class="project-card" data-category="tech" onclick="openModal('project3')">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="Web Dashboard Interface" class="project-img">
                         <div class="project-content">
                             <h3 class="project-title">Crypto/Forex Dashboard</h3>
                             <p class="project-desc">A web dashboard aggregating financial market data utilizing public APIs.</p>
@@ -242,7 +239,7 @@
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Thierry's leadership in the East Africa Youth Hope Project is inspiring. He brings an engineer's problem-solving mindset to community issues."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Colleague" class="author-avatar-img">
                             <div>
                                 <h4 class="author-name">Peer/Colleague</h4>
                                 <span class="author-title">Community Leader</span>
@@ -252,7 +249,7 @@
                     <div class="testimonial-card">
                         <p class="testimonial-text">"An incredibly dedicated student with a rare combination of mechanical aptitude and a deep understanding of modern technology and cybersecurity."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"></div>
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Professor" class="author-avatar-img">
                             <div>
                                 <h4 class="author-name">Professor Placeholder</h4>
                                 <span class="author-title">University of Rwanda</span>
@@ -311,6 +308,23 @@
             <p>&copy; 2024 Niyonkuru Thierry. Built from scratch with HTML, CSS, and JS.</p>
         </div>
     </footer>
+
+    <!-- Project Modal Overlay (Hidden by default) -->
+    <div id="project-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <img id="modal-img" src="" alt="Project Image" class="modal-hero-img">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <div id="modal-tags" class="modal-tags"></div>
+                <p id="modal-desc" class="modal-desc"></p>
+                <div class="modal-links">
+                    <a id="modal-live-link" href="#" class="btn btn-primary" target="_blank">Live Demo</a>
+                    <a id="modal-github-link" href="#" class="btn btn-outline" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- AI Toast Notification Container (Hidden by default) -->
     <!-- Figma: Fixed Position Absolute Container -> Toast Card -->
